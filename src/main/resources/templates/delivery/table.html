@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all">
+</head>
+<body>
+
+<script src="../../../layui/layui.js"></script>
+
+<form class="layui-form layui-row layui-col-space16">
+    <div class="layui-col-md4">
+        <div class="layui-input-wrap">
+            <input type="text" name="A" value="" placeholder="输入买家查询" class="layui-input" lay-affix="clear">
+        </div>
+    </div>
+    <div class="layui-btn-container layui-col-xs12">
+        <button class="layui-btn" lay-submit lay-filter="demo-table-search">查询</button>
+        <button type="reset" class="layui-btn layui-btn-primary">清除输入</button>
+    </div>
+</form>
+<table class="layui-hide" id="ID-table-demo-search"></table>
+<script>
+    layui.use(function(){
+        var table = layui.table;
+        var form = layui.form;
+        var laydate = layui.laydate;
+        // 创建表格实例
+        table.render({
+            elem: '#ID-table-demo-search'
+            ,url: 'http://localhost:8080/delivery/all'
+            ,parseData:function (res) {
+                return{
+                    "code":0
+                    ,"msg":""
+                    ,"count":1000
+                    ,"data":res
+                }
+            }
+            ,cols: [[ //表头
+                {field: 'oid', title: '订单号', width:80, fixed: 'left'}
+                ,{field: 'product', title: '商品', width:100}
+                ,{field: 'name', title: '买家', width:100}
+                ,{field: 'address', title: '收货地址', width:120}
+                ,{field: 'ctime', title: '下单时间', sort: true, width:120}
+                ,{field: 'dtime', title: '预计送达时间', width:120}
+                ,{field: 'company', title: '快递公司'}
+            ]]
+            ,page: true
+            ,height: 310
+        });
+        // 搜索提交
+        form.on('submit(demo-table-search)', function(data){
+            var name = data; // 获得表单字段
+            console.log(name);
+            // 执行搜索重载
+            table.reload('ID-table-demo-search', {
+                page: {
+                    curr: 1 // 重新从第 1 页开始
+                }
+                ,where: name // 搜索的字段
+            });
+<!--            layer.msg('搜索成功<br>此处为静态模拟数据，实际使用时换成真实接口即可');-->
+            return false; // 阻止默认 form 跳转
+        });
+    });
+</script>
+
+</body>
+</html>

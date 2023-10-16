@@ -1,0 +1,43 @@
+<!-- 
+wx:for 遍历输出一个数组
+wx:key="item" 数组元素，必须写item
+{{}} 小程序取值 ${}网页freemarker取值
+interval间隔4s换下一页
+duration动画持续时长1s
+ -->
+<swiper indicator-dots="true" interval="4000" duration="1000" autoplay="true">
+  <swiper-item wx:for="{{hots}}" wx:key="item">
+    <image src="{{api}}{{item.logo}}" mode="aspectFill" />
+  </swiper-item>
+</swiper>
+
+<!-- 绘制布局， -->
+<view class="father">
+
+  <!-- 为了实现一个功能：点击左侧栏后能够动态高亮：
+  流程：首先从后端取得数据"/product/index/vx",取出categorys
+  // 我的理解：点击会
+  然后取出cid，根据data-cid从绑定的事件e.currentTarget.dataset.cid中取得；
+  最后根据cid更新到页面中，再从wxml中判断cid看谁高亮
+ -->
+  <view>
+    <view class="left">
+      <view wx:for="{{categorys}}" wx:key="item" bindtap="cateClick" data-cid="{{item.id}}" class="{{cid==item.id?'category active':'category'}}">
+        {{item.category}}</view>
+    </view>
+    
+    <view class="right">
+      <!-- commodity是父亲
+      当一个区域有好多点击事件，catchtap不会产生点击冲突
+   -->
+      <view class="commodity" catchtap="detail" data-item="{{item}}" wx:for="{{products}}" wx:key="item">
+        <image mode="aspectFill" class="logo" src="{{api}}{{item.logo}}" />
+        <view class="info">
+          <view class="product">{{item.product}}</view>
+          <view class="price">{{item.price}}元</view>
+          <view class="time">{{item.ftime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">订单信息</view>
+  <view class="order-items">
+
+    <view wx:if="{{hasOrderItem}}" class="order-item" style="justify-content: center;" wx:for="{{orders}}" wx:key="item">
+      <image class="product-image" src="{{api}}{{item.logo}}" mode="aspectFill" />
+      <view class="order-item-info">
+        <view class="product-name">{{item.product}}</view>
+        <view class="product-details">{{item.totalPrice}}</view>
+      </view>
+      <view class="order-time">{{item.ctime}}</view>
+    </view>
+
+    <view wx:if="{{!hasOrderItem}}">
+      <view class="container order-item" style="padding-top: 300rpx; padding-bottom: 300rpx; font-weight: bold;">
+        目前还没有订单信息哦~</view>
+    </view>
+  </view>
+</view>

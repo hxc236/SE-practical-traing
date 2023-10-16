@@ -1,0 +1,21 @@
+.wrapper{
+  padding: 20rpx;
+
+}
+.input{
+  padding: 20rpx;
+  border-bottom: 3rpx solid #ddd;
+}
+.btn{
+  background: red;
+  color: white;
+  margin-top: 40rpx;
+}
+
+.title{
+  font-weight: bold;
+  font-size: x-large;
+  width: 80 rpx;
+  height: 80 rpx;
+  text-align: center;
+}

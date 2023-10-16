@@ -1,0 +1,57 @@
+.father{
+  overflow: hidden; /* 子容器用了浮动，父容器要加浮动消除影响 */
+}
+
+.category{
+  line-height: 80rpx; /* 一行字的高度 */
+  height: 80rpx;  /* 行高和高度一致时，垂直居中 */
+  border-bottom: 1rpx solid red;
+  border-right: 1rpx solid red;
+}
+
+.active{
+  background: rgba(255, 0, 0, 0.2);  /* rgba支持透明度 */
+  line-height: 73rpx;  /* <自己加的> 保持垂直居中 */
+  height: 73rpx;
+  border-bottom: 8rpx solid red;  /* 73 + 8 = 80 + 1 */
+  font-weight: bold;  
+}
+
+.left{
+  width: 180rpx;
+
+  text-align: center;   /* 水平居中 */
+  float: left;  /* 左浮动 */
+  border: transparent;
+  
+}
+
+.right{
+  /* 小程序先做好一个，然后获取Java数据 wx:for */
+  /* 不能写高度，不写高度即动态高度 */
+  overflow: hidden;  /* 填充剩余宽度 */
+}
+
+.commodity{
+  overflow: hidden;
+  border-bottom: 1rpx solid #a5a5a5;
+  padding: 20rpx;   /* 边距 */
+}
+.logo{
+  margin-right: 20rpx;
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+}
+.info{
+  overflow: hidden;
+}
+.product{
+  font-weight: bold;
+}
+.price{
+  margin-top: 10rpx;
+}
+.time{
+  
+}

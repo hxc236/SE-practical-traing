@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="header">商品详情</view>
+  <view class="info-item-father">
+    <image style="width: 500rpx; height: 500rpx;" mode="aspectFill" src="{{api}}{{item.logo}}" />
+    <view style="padding: 20rpx;">
+      <view style="font-weight: bold;">{{item.product}}</view>
+      <view style="display: flex; flex-direction: row; justify-content: space-between;">
+        <view style="display: flex; flex-direction: column;">
+          <view>价格：{{item.price}}元</view>
+          <view>库存：{{item.num}}件</view>
+        </view>
+
+
+      </view>
+      <view>上架：{{item.ftime}}</view>
+      <view style="padding-top: 20rpx; display: flex; flex-direction: row; justify-content: center;">
+        <view>购买数量：</view>
+        <image src="../../images/left.png" class="little-icon" mode="aspectFit" catchtap="countRemove" />
+        <input type="number" class="input-count" bindinput="onCountInput" data-name="item_num" placeholder="商品数量" value="{{ item_num }}"></input>
+        <image src="../../images/right.png" class="little-icon" mode="aspectFit" catchtap="countAdd" />
+      </view>
+    </view>
+
+    <view wx:if="{{!collected}}">
+      <button class="add-star-button" bindtap="onStarButton">
+        <text>添加收藏</text>
+        <image style="padding-left: 30rpx; width: 40rpx; height: 40rpx;" src="../../images/star-off.png" mode="aspectFit" />
+      </button>
+    </view>
+    <view wx:if="{{collected}}">
+      <button class="add-star-button" bindtap="onStarButton">
+        <text>取消收藏</text>
+        <image style="padding-left: 30rpx; width: 40rpx; height: 40rpx;" src="../../images/star-on.png" mode="aspectFit" />
+      </button>
+    </view>
+
+    <button class="add-cart-button" bindtap="onAddCartButton">
+      加入购物车
+    </button>
+  </view>
+
+</view>
+
+<view class="comment-section">
+  <view class="comment-header">
+    <text class="comment-title">商品评论</text>
+    <text class="comment-count">{{ commentCount }}</text>
+  </view>
+  <view class="comment-list">
+    <block wx:for="{{ commentWithUsers }}" wx:key="item">
+      <view class="comment-item">
+        <image class="avatar" src="../../images/message.png"></image>
+        <view class="comment-content">
+          <view class="comment-info">
+            <text class="comment-username">{{ item.username }}</text>
+            <text class="comment-time">{{ item.time }}</text>
+          </view>
+          <text class="comment-text">{{ item.comment }}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="comment-input">
+    <view class="textarea-container">
+      <textarea class="textarea-box" bindinput="onCommentInput" value="{{comment}}" placeholder="说两句评论吧~"></textarea>
+    </view>
+  </view>
+  <view class="submit-button-container">
+    <button class="submit-button" catchtap="postComment">发布评论</button>
+  </view>
+</view>
+

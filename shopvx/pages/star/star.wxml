@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="header">收藏</view>
+  <view class="star-items">
+    <view wx:if="{{hasStarItem}}" class="star-item" wx:for="{{stars}}" wx:key="item">
+      <image class="product-image" src="{{api}}{{item.logo}}" mode="aspectFill" />
+      <view class="star-item-info">
+        <view class="product-name">{{item.product}}</view>
+        <view class="product-price">价格{{item.price}}元</view>
+      </view>
+    </view>
+    <view wx:if="{{!hasStarItem}}">
+      <view class="star-item container" style="padding-top: 300rpx; padding-bottom: 300rpx; font-weight: bold;">
+        你还没有收藏哦~
+      </view>
+    </view>
+  </view>
+</view>

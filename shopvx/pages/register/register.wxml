@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="title">SmoothShop</view>
+<view class="wrapper">
+  <input class="input" bindinput="onInput" data-name="username" placeholder="请输入账号"/>
+  <input class="input" bindinput="onInput" data-name="password" placeholder="请输入密码"/>
+</view>
+<button class="btn" bindtap="submit">注册</button>
+</view>

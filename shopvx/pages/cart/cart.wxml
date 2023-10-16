@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="header">购物车</view>
+
+  <view class="cart-items">
+    <view wx:if="{{hasItem}}" wx:for="{{cart}}" wx:key="item" class="cart-item">
+      <image class="product-image" src="{{api}}{{item.logo}}" catchtap="checkInfo" data-item="{{item.pid}}" mode="aspectFill" />
+      <view class="cart-item-info">
+        <view class="product-name" catchtap="checkInfo">{{item.product}}</view>
+        <view class="product-price">¥{{item.price}}</view>
+        <view class="quantity">×{{item.count}}</view>
+      </view>
+      <view class="cart-item-info">
+        <!--   <view class="edit-cart-item" catchtap="cartEdit"
+        data-id="{{item.id}}">编辑</view> -->
+        <view class="delete-cart-item">
+          <button catchtap="cartDel" style="width: fit-content; " class="delete-cart-btn" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+      <view class="store-name">{{item.store}}</view>
+    </view>
+    <view wx:if="{{!hasItem}}">
+      <view class="container" style="padding-top: 300rpx; padding-bottom: 300rpx; font-weight: bold;">
+        购物车为空哦，快去购物吧！</view>
+    </view>
+  </view>
+
+  <button class="checkout-button" bindtap="handleCheckout">
+    结账 总计 {{totalPrice}} 元</button>
+</view>

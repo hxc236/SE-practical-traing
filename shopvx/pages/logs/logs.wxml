@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="content_field">
+  <view class="father">
+    <view class="userarea">
+      <!-- 头像 -->
+      <image class="icon-photo" src="{{api}}{{photo}}" mode="aspectFill" />
+      <view style="flex-direction: column;">
+        <view class="userinfo1">{{user}}</view>
+        <view class="userinfo2">用户名：{{username}}</view>
+      </view>
+    </view>
+    <view style="padding-top: 100rpx; display: flex; flex-direction: row; justify-content: space-between;">
+      <view class="my-star" catchtap="openStar">
+        <image class="icon-style" src="../../images/star.png" mode="aspectFill"/>
+        <text class="image-hint">我的收藏</text>
+      </view>
+      <view class="my-comment" catchtap="openComment">
+        <image class="icon-style" src="../../images/message.png" mode="aspectFill"/>
+        <text class="image-hint">我的评论</text>
+      </view>
+      <view class="my-order" catchtap="openOrder">
+        <image class="icon-style" src="../../images/wallet.png" mode="aspectFill"/>
+        <text class="image-hint">我的订单</text>
+      </view>
+
+    </view>
+
+    
+    <view>
+      <button class="caution" catchtap="logout">退出登录</button>
+    </view>
+    
+
+  </view>
+
+</view>
